@@ -1,5 +1,4 @@
 const { app, BrowserWindow } = require("electron");
-// import { calculator } from "js/calc";
 
 require("electron-reload")(__dirname);
 // Keep a global reference of the window object, if you don't, the window will
@@ -8,7 +7,11 @@ let win;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({ width: 280, height: 470 });
+  win = new BrowserWindow({
+    width: 280,
+    height: 470
+    // titleBarStyle: "hidden"
+  });
 
   // and load the index.html of the app.
   win.loadFile("index.html");
