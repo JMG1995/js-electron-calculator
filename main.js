@@ -9,7 +9,7 @@ function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
     width: 280,
-    height: 470
+    height: 460
     // titleBarStyle: "hidden"
   });
 

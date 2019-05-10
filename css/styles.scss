@@ -12,8 +12,6 @@ body {
     background: #202020;
     color: #fff;
   }
-
-  
   
   .keys__container {
     -webkit-app-region: no-drag;
@@ -46,8 +44,7 @@ body {
     
   }
   
-  .screen,
-  .space {
+  .screen {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -55,8 +52,9 @@ body {
     font-size: 2.4em;
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5);
     flex: 1 1 100%;
-    height: 20%;
+    height: 108px;
     border-bottom: 2px solid #000;
+
 
     .screen__result {
       display: flex;
@@ -66,6 +64,8 @@ body {
     }
   }
   
-
-  
-  
+  .space {
+    height: 80px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 2px;
+  }
