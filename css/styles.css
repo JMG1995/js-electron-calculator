@@ -14,7 +14,7 @@ html {
   color: #fff;
 }
 
-.keys-container {
+.keys__container {
   -webkit-app-region: no-drag;
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +35,7 @@ html {
   height: 20%;
   border-bottom: 2px solid #000;
 }
-.result {
+.screen__result {
   display: flex;
   flex-direction: row;
   padding: 5px 20px;
@@ -55,7 +55,7 @@ html {
   -webkit-app-region: no-drag;
 }
 
-.item.equals {
+.item--equals {
   background: #fff;
   color: #333;
 }
