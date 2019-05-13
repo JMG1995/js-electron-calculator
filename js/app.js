@@ -15,6 +15,7 @@ const calculate = (firstNum, operator, secondNum) => {
 const getKey = () => {
   const keys = document.querySelectorAll("button");
   let result = document.querySelector(".screen__result");
+  const screen = document.querySelector(".screen");
   const calculator = document.querySelector("#app");
   let previousKeyType = calculator.dataset.previousKeyType;
 
@@ -22,6 +23,16 @@ const getKey = () => {
     key.addEventListener("click", e => {
       const btn = e.target;
       const action = btn.dataset.action;
+      if (result.textContent.length > 17) {
+        return null;
+      } else if (result.textContent.length > 13) {
+        screen.style.fontSize = "1.4em";
+      } else if (result.textContent.length > 11) {
+        screen.style.fontSize = "1.6em";
+      } else if (result.textContent.length > 9) {
+        screen.style.fontSize = "2em";
+      }
+      console.log(result.textContent.length);
 
       // check type of key pressed and perform appropriate function
       if (!action) {
