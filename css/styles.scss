@@ -3,10 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border-radius: 50px;
-    background: #202020;
-    color: #fff;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(238,174,202);
+    background: linear-gradient(4deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    
     &:not(.user-is-tabbing) {
       button:focus,
       input:focus,
@@ -15,6 +17,14 @@
         outline: none;
       }
     }  
+  }
+  
+  #app {
+    border-radius: 5px;
+    background: #202020;
+    color: #fff;
+    width: 280px;
+    box-shadow: 1px 3px 10px #000;
 }
 
 .keys__container {

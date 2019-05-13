@@ -4,9 +4,17 @@ body {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 50px;
-  background: #202020;
-  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #eeaeca;
+  background: linear-gradient(4deg, #eeaeca 0%, #94bbe9 100%);
 }
 
 body:not(.user-is-tabbing) button:focus,
@@ -14,6 +22,15 @@ body:not(.user-is-tabbing) input:focus,
 body:not(.user-is-tabbing) select:focus,
 body:not(.user-is-tabbing) textarea:focus {
   outline: none;
+}
+
+#app {
+  border-radius: 5px;
+  background: #202020;
+  color: #fff;
+  width: 280px;
+  -webkit-box-shadow: 1px 3px 10px #000;
+          box-shadow: 1px 3px 10px #000;
 }
 
 .keys__container {
