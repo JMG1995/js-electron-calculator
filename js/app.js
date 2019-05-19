@@ -1,4 +1,8 @@
 window.addEventListener("keydown", handleFirstTab);
+const keys = document.querySelectorAll("button");
+let result = document.querySelector(".screen__result");
+const screen = document.querySelector(".screen");
+const calculator = document.querySelector("#app");
 
 const calculate = (firstNum, operator, secondNum) => {
   if (operator == "divide") {
@@ -12,48 +16,47 @@ const calculate = (firstNum, operator, secondNum) => {
   }
 };
 
-const getKey = () => {
-  const keys = document.querySelectorAll("button");
-  let result = document.querySelector(".screen__result");
-  const screen = document.querySelector(".screen");
-  const calculator = document.querySelector("#app");
-  let previousKeyType = calculator.dataset.previousKeyType;
+const numKey = (prevKey, item) => {
+  // appends numbers rather than replace
+  if (
+    result.textContent == "0" ||
+    prevKey == "operator" ||
+    prevKey == "equals" ||
+    prevKey === ""
+  ) {
+    result.textContent = item.textContent;
+  } else {
+    result.textContent += item.textContent;
+    prevKey = "number";
+  }
+};
 
+const getKey = () => {
   keys.forEach(key => {
     key.addEventListener("click", e => {
       const btn = e.target;
       const action = btn.dataset.action;
-      if (result.textContent.length > 17) {
-        return null;
-      } else if (result.textContent.length > 13) {
-        screen.style.fontSize = "1.4em";
-      } else if (result.textContent.length > 11) {
-        screen.style.fontSize = "1.6em";
-      } else if (result.textContent.length > 9) {
-        screen.style.fontSize = "2em";
-      }
-      console.log(result.textContent.length);
+      let previousKeyType = calculator.dataset.previousKeyType;
 
+      // if (result.textContent.length > 16) {
+      //   return undefined;
+      // } else if (result.textContent.length > 13) {
+      //   screen.style.fontSize = "1.4em";
+      // } else if (result.textContent.length > 11) {
+      //   screen.style.fontSize = "1.6em";
+      // } else if (result.textContent.length > 9) {
+      //   screen.style.fontSize = "2em";
+      // }
       // check type of key pressed and perform appropriate function
       if (!action) {
-        // appends numbers rather than replace
-        if (
-          result.textContent == "0" ||
-          previousKeyType == "operator" ||
-          previousKeyType == "equals"
-        ) {
-          result.textContent = key.textContent;
-          previousKeyType = "number";
-        } else {
-          result.textContent += key.textContent;
-        }
+        numKey(previousKeyType, key);
       } else if (
         action === "divide" ||
         action === "add" ||
         action === "subtract" ||
         action === "multiply"
       ) {
-        if (previousKeyType === "operator") {
+        if (previousKeyType == "operator" || previousKeyType == "equals") {
           return result.textContent;
         }
         const firstVal = calculator.dataset.firstVal;
@@ -92,6 +95,7 @@ const getKey = () => {
 
         result.textContent = calculate(firstVal, operator, secondval);
       }
+
       // end check
     });
   });

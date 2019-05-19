@@ -12,6 +12,8 @@ Once all packages have been installed:
 npm start
 ```
 
+Or simply [visit the web version](https://jmg1995.github.io/js-electron-calculator/)
+
 Credits:  
 [Design by Nikhil Kapoor](http://www.tuvie.com/calculator-2-0-by-nikhil-kapoor/)  
 [Functionality assistance by Zell Liew](https://medium.freecodecamp.org/how-to-build-an-html-calculator-app-from-scratch-using-javascript-4454b8714b98)
