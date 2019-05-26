@@ -1,12 +1,16 @@
+import numKey from "./numLogic.js";
+
+const keys = document.querySelectorAll("button");
+let result = document.querySelector(".screen__result");
+window.addEventListener("keydown", handleFirstTab);
+
 const getKey = () => {
-  const keys = document.querySelectorAll("button");
-  let result = document.querySelector(".screen__result");
   keys.forEach(key => {
     key.addEventListener("click", e => {
       const btn = e.target;
       const action = btn.dataset.action;
       if (!action) {
-        console.log("number key");
+        numKey(btn, result);
       } else if (
         action === "divide" ||
         action === "add" ||
@@ -23,9 +27,17 @@ const getKey = () => {
       if (key === "=") {
         return null;
       }
-      return (result.innerHTML = key.innerHTML);
     });
   });
 };
 
 getKey();
+
+// Add focus outline if user is not using mouse
+function handleFirstTab(e) {
+  if (e.keyCode === 9) {
+    // the "I am a keyboard user" key
+    document.body.classList.add("user-is-tabbing");
+    window.removeEventListener("keydown", handleFirstTab);
+  }
+}
