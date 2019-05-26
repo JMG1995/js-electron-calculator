@@ -2,7 +2,7 @@ window.addEventListener("keydown", handleFirstTab);
 const keys = document.querySelectorAll("button");
 let result = document.querySelector(".screen__result");
 const screen = document.querySelector(".screen");
-const calculator = document.querySelector("#app");
+const operator = document.querySelectorAll("button .item__operator");
 
 const calculate = (firstNum, operator, secondNum) => {
   if (operator == "divide") {
@@ -17,34 +17,33 @@ const calculate = (firstNum, operator, secondNum) => {
 };
 
 const numKey = (prevKey, item) => {
-  // appends numbers rather than replace
-  if (
-    result.textContent == "0" ||
-    prevKey == "operator" ||
-    prevKey == "equals" ||
-    prevKey === ""
-  ) {
+  // appends numbers rather than replaces
+
+  if (result.textContent === "0") {
+    return (result.textContent = item.textContent);
+  } else if (prevKey == "operator" || prevKey == "equals") {
+    console.log("test:", "test");
     return (result.textContent = item.textContent);
   } else {
-    prevKey = "number";
     return (result.textContent += item.textContent);
   }
 };
 
-const operatorKey = (prevKey, action) => {
+const operatorKey = (prevKey, action, calc) => {
   if (prevKey == "operator" || prevKey == "equals") {
+    ("console.log('worked:', worked)");
     return result.textContent;
   }
-  const firstVal = calculator.dataset.firstVal;
-  const operator = calculator.dataset.operator;
+  const firstVal = calc.dataset.firstVal;
+  const operator = calc.dataset.operator;
   const secondval = result.textContent;
   // hitting an operator key will sum the previous 2 numbers
   if (firstVal && operator) {
-    result.textContent = calculate(firstVal, operator, secondval);
+    return (result.textContent = calculate(firstVal, operator, secondval));
   }
-  prevKey = "operator";
-  calculator.dataset.firstVal = result.textContent;
-  calculator.dataset.operator = action;
+  calc.dataset.firstVal = result.textContent;
+  calc.dataset.operator = action;
+  return (prevKey = "operator");
 };
 
 const decimal = (prevKey, item) => {
@@ -52,17 +51,17 @@ const decimal = (prevKey, item) => {
   if (prevKey == "operator") {
     result.textContent = "0";
   }
-  result.textContent += item.textContent;
-  return (prevKey = "decimal");
+  return (result.textContent += item.textContent);
+  // return (prevKey = "decimal");
 };
 
-const equals = prevKey => {
+const equals = (prevKey, calc) => {
   if (prevKey == "equals" || prevKey == "decimal" || prevKey == "operator") {
     return result.textContent;
   }
-  prevKey = "equals";
-  const firstVal = calculator.dataset.firstVal;
-  const operator = calculator.dataset.operator;
+  // prevKey = "equals";
+  const firstVal = calc.dataset.firstVal;
+  const operator = calc.dataset.operator;
   const secondval = result.textContent;
 
   return (result.textContent = calculate(firstVal, operator, secondval));
@@ -73,37 +72,42 @@ const getKey = () => {
     key.addEventListener("click", e => {
       const btn = e.target;
       const action = btn.dataset.action;
-      console.log(action);
+      const calculator = document.querySelector("#app");
       let previousKeyType = calculator.dataset.previousKeyType;
+
       // check type of key pressed and perform appropriate function
+
       if (!action) {
         numKey(previousKeyType, key);
+        console.log("prevKey", previousKeyType);
       } else if (
         action === "divide" ||
         action === "add" ||
         action === "subtract" ||
         action === "multiply"
       ) {
-        operatorKey(previousKeyType, action);
+        return operatorKey(previousKeyType, action, calculator);
       } else if (
         // adds decimal if does not exist
         action === "decimal" &&
         !result.textContent.includes(".")
       ) {
         decimal(previousKeyType, key);
+        previousKeyType = "decimal";
       } else if (action === "equals") {
-        equals(previousKeyType);
+        equals(previousKeyType, calculator);
+        previousKeyType = "equals";
       }
-
-      if (result.textContent.length > 16) {
-        result.textContent;
-      } else if (result.textContent.length > 13) {
-        screen.style.fontSize = "1.4em";
-      } else if (result.textContent.length > 11) {
-        screen.style.fontSize = "1.6em";
-      } else if (result.textContent.length > 9) {
-        screen.style.fontSize = "2em";
-      }
+      // Restrict numbers shown
+      // if (result.textContent.length > 16) {
+      //   result.textContent;
+      // } else if (result.textContent.length > 13) {
+      //   screen.style.fontSize = "1.4em";
+      // } else if (result.textContent.length > 11) {
+      //   screen.style.fontSize = "1.6em";
+      // } else if (result.textContent.length > 9) {
+      //   screen.style.fontSize = "2em";
+      // }
 
       // end check
     });
