@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 window.addEventListener("keydown", handleFirstTab);
 const keys = document.querySelectorAll("button");
 let result = document.querySelector(".screen__result");
@@ -68,10 +69,16 @@ const equals = (prevKey, calc) => {
 };
 
 const getKey = () => {
+=======
+const getKey = () => {
+  const keys = document.querySelectorAll("button");
+  let result = document.querySelector(".screen__result");
+>>>>>>> parent of 9da72c5... add calculator functionality. add button press effects
   keys.forEach(key => {
     key.addEventListener("click", e => {
       const btn = e.target;
       const action = btn.dataset.action;
+<<<<<<< HEAD
       const calculator = document.querySelector("#app");
       let previousKeyType = calculator.dataset.previousKeyType;
 
@@ -80,12 +87,17 @@ const getKey = () => {
       if (!action) {
         numKey(previousKeyType, key);
         console.log("prevKey", previousKeyType);
+=======
+      if (!action) {
+        console.log("number key");
+>>>>>>> parent of 9da72c5... add calculator functionality. add button press effects
       } else if (
         action === "divide" ||
         action === "add" ||
         action === "subtract" ||
         action === "multiply"
       ) {
+<<<<<<< HEAD
         return operatorKey(previousKeyType, action, calculator);
       } else if (
         // adds decimal if does not exist
@@ -110,17 +122,21 @@ const getKey = () => {
       // }
 
       // end check
+=======
+        console.log("operator key");
+      } else if (action === "decimal") {
+        console.log("decimal key");
+      } else if (action === "equals") {
+        console.log("equals key");
+      }
+
+      if (key === "=") {
+        return null;
+      }
+      return (result.innerHTML = key.innerHTML);
+>>>>>>> parent of 9da72c5... add calculator functionality. add button press effects
     });
   });
 };
 
 getKey();
-
-// Add focus outline if user is not using mouse
-function handleFirstTab(e) {
-  if (e.keyCode === 9) {
-    // the "I am a keyboard user" key
-    document.body.classList.add("user-is-tabbing");
-    window.removeEventListener("keydown", handleFirstTab);
-  }
-}
