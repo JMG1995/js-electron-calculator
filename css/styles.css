@@ -9,38 +9,11 @@ body, html {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: #eeaeca;
-  background: linear-gradient(4deg, #eeaeca 0%, #94bbe9 100%);
-}
-
-<<<<<<< HEAD
-body:not(.user-is-tabbing) button:focus,
-body:not(.user-is-tabbing) input:focus,
-body:not(.user-is-tabbing) select:focus,
-body:not(.user-is-tabbing) textarea:focus {
-  outline: none;
-}
-
-#app {
-  border-radius: 5px;
+  border-radius: 50px;
   background: #202020;
   color: #fff;
-  width: 280px;
-  -webkit-box-shadow: 1px 3px 10px #000;
-          box-shadow: 1px 3px 10px #000;
 }
 
-=======
->>>>>>> parent of 9da72c5... add calculator functionality. add button press effects
 .keys__container {
   -webkit-app-region: no-drag;
   display: -webkit-box;

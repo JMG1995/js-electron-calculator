@@ -8,40 +8,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-<<<<<<< HEAD
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(238,174,202);
-    background: linear-gradient(4deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    
-    &:not(.user-is-tabbing) {
-      button:focus,
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: none;
-      }
-    }  
-  }
-  
-  #app {
-    border-radius: 5px;
-    background: #202020;
-    color: #fff;
-    width: 280px;
-    box-shadow: 1px 3px 10px #000;
-}
-
-.keys__container {
-=======
     border-radius: 50px;
     background: #202020;
     color: #fff;
   }
   
   .keys__container {
->>>>>>> parent of 9da72c5... add calculator functionality. add button press effects
     -webkit-app-region: no-drag;
     display: flex;
     flex-wrap: wrap;
